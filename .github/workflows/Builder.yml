@@ -46,10 +46,10 @@ jobs:
           cp -v android_kernel_xiaomi_sdm710/out/arch/arm64/boot/Image.gz \
                      AnyKernel3/
           pushd AnyKernel3
-          7z a -mx9 ../${{ github.run_number }}_MI8SE-KernelSU_LineageOS20.zip *
+          7z a -mx9 ../${{ github.run_number }}_MI8SE-Kernel_LineageOS20.zip *
           popd
       - name: Upload build kernel
         uses: actions/upload-artifact@v3
         with:
           name: MI8se kernel
-          path: ${{ github.run_number }}_MI8SE-KernelSU_LineageOS20.zip
+          path: ${{ github.run_number }}_MI8SE-Kernel_LineageOS20.zip
