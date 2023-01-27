@@ -45,11 +45,11 @@ jobs:
           cp -v android_kernel_xiaomi_sdm710/out/arch/arm64/boot/Image.gz \
                      AnyKernel3/
           pushd AnyKernel3
-          7z a -mx9 ../${{ github.run_number }}_MI8SE-Kernel_LineageOS19.zip *
+          7z a -mx9 ../${{ github.run_number }}_MI8SE-Kernel.zip *
           popd
       - name: Upload to Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "${{ github.run_number }}_MI8SE-Kernel_LineageOS19.zip"
+          artifacts: "kernel-build/kernel-build/${{ github.run_number }}_MI8SE-Kernel.zip"
           tag: "${{ github.run_number }}_MI8SE"
           token: ${{ secrets.GITHUB_TOKEN }}
