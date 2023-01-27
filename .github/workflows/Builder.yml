@@ -1,10 +1,10 @@
-name: Build Kernel For MI8SE(sirius)
+name: Build-Kernel-MI8SE(sirius)
 
 on:
   workflow_dispatch:
 
 jobs:
-  KSUForSirius:
+  Build-Kernel:
     runs-on: ubuntu-latest
     steps:
       - name: Installing Dependencies
