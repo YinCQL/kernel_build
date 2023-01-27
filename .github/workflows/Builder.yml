@@ -1,4 +1,4 @@
-name: Build KernelSU For MI8SE(sirius)
+name: Build Kernel For MI8SE(sirius)
 
 on:
   workflow_dispatch:
@@ -48,6 +48,8 @@ jobs:
           pushd AnyKernel3
           7z a -mx9 ../${{ github.run_number }}_MI8SE-KernelSU_LineageOS20.zip *
           popd
-      - name: Uploading Kernel Package
-        run: |
-          ./transfer trs ${{ github.run_number }}_MI8SE-KernelSU_LineageOS20.zip
+      - name: Upload build kernel
+        uses: actions/upload-artifact@v3
+        with:
+          name: MI8se kernel
+          path: ${{ github.run_number }}_MI8SE-KernelSU_LineageOS20.zip
