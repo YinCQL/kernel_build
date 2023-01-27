@@ -12,10 +12,9 @@ jobs:
           sudo apt update -y
           sudo apt-get install -y zip flex bison libncurses-dev gawk  libiberty-dev autoconf kmod bc build-essential gcc libc6 curl libstdc++6 git wget libssl-dev cpio p7zip-full
           sudo apt clean
-          curl -sL https://git.io/file-transfer | bash -s beta
       - name: Cloning Sources and Toolchain
         run: |
-          git clone https://github.com/YinCQL/android_kernel_xiaomi_sdm710 --depth=1 -b lineage-19.1 --recurse-submodules
+          git clone https://github.com/YinGIL/android_kernel_xiaomi_sdm710 --depth=1 -b lineage-19.1 --recurse-submodules
           git clone https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r445002 --depth=1 --single-branch --no-tags -b 12.0 ~/clang
           git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-10.0.0_r47 --depth=1 --single-branch --no-tags ~/aarch64-linux-android-4.9
           git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android-10.0.0_r47 --depth=1 --single-branch --no-tags ~/arm-linux-androideabi-4.9
@@ -48,6 +47,9 @@ jobs:
           pushd AnyKernel3
           7z a -mx9 ../${{ github.run_number }}_MI8SE-Kernel_LineageOS19.zip *
           popd
-      - name: Uploading Kernel Package
-        run: |
-          ./transfer trs ${{ github.run_number }}_MI8SE-Kernel_LineageOS19.zip
+      - name: Upload to Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "${{ github.run_number }}_MI8SE-Kernel_LineageOS19.zip"
+          tag: "${{ steps.config.outputs.kernel_name }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
