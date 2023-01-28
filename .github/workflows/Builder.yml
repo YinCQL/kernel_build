@@ -7,6 +7,8 @@ jobs:
   Build-Kernel:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Installing Dependencies
         run: |
           sudo apt update -y
@@ -47,9 +49,8 @@ jobs:
           pushd AnyKernel3
           7z a -mx9 ../${{ github.run_number }}_MI8SE-Kernel.zip *
           popd
-      - name: Upload to Release
-        uses: ncipollo/release-action@v1
+      - name: Upload build
+        uses: actions/upload-artifact@v3
         with:
-          artifacts: "/home/runner/work/kernel-build/kernel-build/${{ github.run_number }}_MI8SE-Kernel.zip"
-          tag: "${{ github.run_number }}_MI8SE"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          name: MI8SE-Kernel
+          path: ${{ github.run_number }}_MI8SE-Kernel.zip
