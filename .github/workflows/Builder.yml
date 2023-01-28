@@ -50,6 +50,6 @@ jobs:
       - name: Upload to Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "kernel-build/kernel-build/${{ github.run_number }}_MI8SE-Kernel.zip"
+          artifacts: "/home/runner/work/kernel-build/kernel-build/${{ github.run_number }}_MI8SE-Kernel.zip"
           tag: "${{ github.run_number }}_MI8SE"
           token: ${{ secrets.GITHUB_TOKEN }}
