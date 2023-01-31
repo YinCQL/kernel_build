@@ -1,4 +1,4 @@
-name: Lineage-Kernel
+name: MIUI-A12-Kernel
 
 on:
   workflow_dispatch:
