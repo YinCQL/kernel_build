@@ -14,7 +14,6 @@ jobs:
           sudo apt update -y
           sudo apt-get install -y zip flex bison libncurses-dev gawk  libiberty-dev autoconf kmod bc build-essential gcc libc6 curl libstdc++6 git wget libssl-dev cpio p7zip-full
           sudo apt clean
-          sudo apt-get install device-tree-compiler
       - name: Cloning Sources and Toolchain
         run: |
           git clone https://github.com/YinCQL/kernel_xiaomi --depth=1 -b xt --recurse-submodules
@@ -30,7 +29,6 @@ jobs:
           PATH=$CLANG:$GCC64:$GCC32:$PATH
           export PATH
           export ARCH=arm64
-          export DTC_EXT=dtc
           export CLANG_TRIPLE=aarch64-linux-gnu
           export CROSS_COMPILE=aarch64-linux-android-
           export CROSS_COMPILE_ARM32=arm-linux-androideabi-
