@@ -52,5 +52,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "MI8SE-Kernel.zip"
-          tag: "${{ github.run_number }}_MI8SE-Kernel_erofs"
+          tag: "${{ github.run_number }}_MI8SE-Kernel_common"
           token: ${{ secrets.GITHUB_TOKEN }}
